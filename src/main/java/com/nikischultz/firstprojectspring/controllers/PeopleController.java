@@ -1,20 +1,13 @@
 package com.nikischultz.firstprojectspring.controllers;
 
 import com.nikischultz.firstprojectspring.model.Contact;
-import com.nikischultz.firstprojectspring.model.Person;
-import com.nikischultz.firstprojectspring.repositories.ContactRepository;
-import com.nikischultz.firstprojectspring.repositories.PersonRepository;
 import com.nikischultz.firstprojectspring.services.ContactService;
 import com.nikischultz.firstprojectspring.services.PersonService;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 
-@Controller
+@RestController
 public class PeopleController {
 
     private final PersonService personService;
