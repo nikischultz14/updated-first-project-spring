@@ -47,19 +47,13 @@
                     </tr>
                     </thead>
 
-                    <tr>
-                        <td>Bob</td>
-                        <td>Builder</td>
-                        <td>111-222-3333</td>
-                        <td>123@123.com</td>
-                    </tr>
                     <tr th:each="contact : ${contact}">
                         <td th:text="${contact.firstName}">Bob</td>
                         <td th:text="${contact.lastName}">Builder</td>
                         <td th:text="${contact.phoneNumber}">111-222-3333</td>
                         <td th:text="${contact.emailAddress}">123@123.com</td>
-                        <td><a href="#" th:href="@{'/contact/' + ${contact.id} + '/update'}">Update</a></td>
-                        <td><a href="#" th:href="@{'/contact/' + ${contact.id} + '/delete'}">Delete</a></td>
+                        <td><a href="#" th:href="@{'/update/' + ${contact.id}}">Update</a></td>
+                        <td><a href="#" th:href="@{'/update/' + ${contact.id}}">Delete</a></td>
 
                     </tr>
                 </table>
