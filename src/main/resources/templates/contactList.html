@@ -52,8 +52,8 @@
                         <td th:text="${contact.lastName}">Builder</td>
                         <td th:text="${contact.phoneNumber}">111-222-3333</td>
                         <td th:text="${contact.emailAddress}">123@123.com</td>
-                        <td><a href="#" th:href="@{'/update/' + ${contact.id}}">Update</a></td>
-                        <td><a href="#" th:href="@{'/update/' + ${contact.id}}">Delete</a></td>
+                        <td><a href="#" th:href="@{'/updatePerson/' + ${contact.id}}">Update</a></td>
+                        <td><a href="#" th:href="@{'/delete/' + ${contact.id}}">Delete</a></td>
 
                     </tr>
                 </table>

@@ -55,37 +55,26 @@ public class ContactController {
     }
 
     //update contact
-    @GetMapping(value = "/update/{id}")
-    public String updateContact(@PathVariable int id, Contact contact) {
-        contact = contactService.getContactById(id).orElse(null);
+    @GetMapping(value = "/updatePerson/{id}")
+    public String getContact(@PathVariable int id, Model model) {
+        model.addAttribute("contact", contactService.getContactById(id));
 
-        return "update";
+        return "updatePerson";
     }
 
-    @PostMapping(value = "/update/{id}")
-    public String saveUpdateContact(@PathVariable int id, Model model, Contact contact) {
-        Contact updateContact = contactService.getContactById(id).orElse(null);
+    @PostMapping(value = "/updatePerson")
+    public String updatePerson( Contact contact, Model model) {
+        contactRepository.save(contact);
+        model.addAttribute("contact", new Contact());
 
-        if (updateContact != null) {
-            updateContact.setFirstName(contact.getFirstName());
-            updateContact.setLastName(contact.getLastName());
-            updateContact.setAge(contact.getAge());
-            updateContact.setGender(contact.getGender());
-            updateContact.setEmailAddress(contact.getEmailAddress());
-            updateContact.setPhoneNumber(contact.getPhoneNumber());
-            updateContact.setCity(contact.getCity());
-            updateContact.setState(contact.getState());
-        }
-
-        contactService.saveContact(updateContact);
-
-
+        String info = String.format("update: " + contact.getId() + " " + contact.getAge() + " " + contact.getFirstName());
+        System.out.println(info);
 
         return "redirect:/contactList";
     }
 
     //delete contact
-    @DeleteMapping(value = "/delete/{id}")
+    @GetMapping(value = "/delete/{id}")
     public String deleteContact(@PathVariable int id) {
         contactService.deleteContact(id);
         return "redirect:/contactList";
